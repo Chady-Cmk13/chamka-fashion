@@ -16,3 +16,4 @@
         cartCount.textContent = count;alert ( 'Produit ajouté au panier ! ')
     };
  };
+ 

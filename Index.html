@@ -1,70 +1,209 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1"
-        <title>Chamka Fashion-Boutique en ligne </title>
-        <link rel="stylesheet" href="style.css" />
-        <link href="http://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
-                <h1 class="logo">Chamka Fashion</h1>
-                <ul class="nav-links">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Contact</a></li>
+<html lang="en">
 
-                </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamka-Fashion</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="cdmn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h2>Chamka-<span>Fashion</span></h2>
+        </div>
+        <div class="navbar-liens">
+            <nav>
+                <a href="Index.html">Accueil</a>
+                <a href="Produits.html">Produits</a>
+                <a href="categorie.html">Catégories</a>
+                <a href="contact.html">Contact</a>
             </nav>
-             </header>
-             <main>
-                <section class="hero">
-                    <h2>Decouvrez des produits selon vos désirs</h2>
-                    <p>Des vetements et acessoires sublime et accessible pour vous.</p>
-                    <a href="#" class="btn-primary">Voir la collection</a>
-                </section>
-                <section class="products">
-                    <h3>Nos produits phare</h3>
-                    <div class="produits-list">
-                        <article class="produits-item">
-                            <img src="images/pantalon1.jpg" alt="Pantalon Cargo"/>
-                            <h4>Pantalon Cargo</h4>
-                            <p>A seulement 25$</p>
-                            <button>Ajouter au panier</button>
-                        </article>
-                        <article class="products-item">
-                            <img src="images/chemisedeplage.jpg" alt="Chemise de plage" />
-                            <h4>Chemise de plage Stylé</h4>
-                            <p>A partir de 15$</p>
-                            <button>Ajouter au panier</button>
-                        </article>
-                        <article class="products-item">
-                            <img src="image/chainette.jpg" alt="Chainette Tendance" />
-                            <h4>Chainette Tendance</h4>
-                            <P>A partir de 18$</P>
-                            <button>Ajouter au panier</button>
-                        </article>
+        </div>
+        <div class="icon-panier">
+            <a href="panier.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="container-text">
+                <h1>Découvrez <br>l'Excellence <span><br>à Chaque Achat</span></h1>
+                <p>Des Produits de qualité premium, livree rapidement chez vous.
+                    <br>Profitez de notre collection exclusive à des prix imbattable
+                </p>
+                <div class="container-button-flex">
+                    <div class="btn"><a href="Produits.html" class="btn">Voir les Produits</a></div>
+                    <div class="btn"><a href="categorie.html" class="btn">Voir les categorie</a></div>
+                </div>
+                <div>
+                    <p>Pour le paiement, la moitie du prix est payé pendant la commande et l'autre moiti le jour de la
+                        livraison</p>
+                </div>
+                <div>
+                    <p>Nos livraisons sont effectuées entre 3jours et 7 jours ouvrables, selon la disponibilité des
+                        produits.</p>
+                </div>
+            </div>
+            <div class="container-image">
+                <img src="image/jeans_1203-8093.jpg" alt="Fashion Image">
+            </div>
+        </div>
+    </main>
+    <section class="popular-products">
+        <h2>Nos Produits Populaires</h2>
+        <p>Découvrez notre sélection de produits les plus appréciés par nos clients</p>
+        <div class="products-grid">
+            <!-- Produit 1 -->
+            <div class="product-card">
+                <div class="product-badges">
+                    <span class="badge-new">Nouveau</span>
+                    <span class="badge-sale">-13%</span>
+                </div>
+                <button class="fav-btn" title="Ajouter aux favoris">&#9825;</button>
+                <div class="product-img">
+                    <!-- Icône tablette -->
+                    <svg width="48" height="48" viewBox="0 0 48 48">
+                        <rect x="8" y="8" width="32" height="32" rx="6" fill="#6c63ff" />
+                        <rect x="14" y="14" width="20" height="20" rx="3" fill="#fff" />
+                        <rect x="20" y="34" width="8" height="2" rx="1" fill="#ffd600" />
+                        <rect x="22" y="16" width="4" height="10" rx="2" fill="#6c63ff" />
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Électronique</span>
+                    <div class="product-title">iPhone 15 Pro Max</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(2456)</span>
                     </div>
-                </section>
-             </main>
-             <footer>
-                <p>Site créé par Chadrack Malamba Kabeya</p>
-             </footer>
-             <script src="script.js"></script>
+                    <div class="product-prices">
+                        <span class="price">1299,99€</span>
+                        <span class="old-price">1499,99€</span>
+                    </div>
+                </div>
+                <button class="add-cart-btn">Ajouter au panier</button>
+            </div>
+            <!-- Produit 2 -->
+            <div class="product-card">
+                <div class="product-badges">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <button class="fav-btn" title="Ajouter aux favoris">&#9825;</button>
+                <div class="product-img">
+                    <!-- Icône laptop -->
+                    <svg width="48" height="48" viewBox="0 0 48 48">
+                        <rect x="8" y="12" width="32" height="20" rx="4" fill="#3fa9f5" />
+                        <rect x="12" y="16" width="24" height="12" rx="2" fill="#fff" />
+                        <rect x="16" y="32" width="16" height="2" rx="1" fill="#ffd600" />
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Électronique</span>
+                    <div class="product-title">MacBook Air M3</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(1823)</span>
+                    </div>
+                    <div class="product-prices">
+                        <span class="price">1399,99€</span>
+                    </div>
+                </div>
+                <button class="add-cart-btn">Ajouter au panier</button>
+            </div>
+            <!-- Produit 3 -->
+            <div class="product-card">
+                <div class="product-badges">
+                    <span class="badge-sale">-25%</span>
+                </div>
+                <button class="fav-btn" title="Ajouter aux favoris">&#9825;</button>
+                <div class="product-img">
+                    <!-- Icône chaussure -->
+                    <svg width="48" height="48" viewBox="0 0 48 48">
+                        <rect x="8" y="32" width="32" height="8" rx="4" fill="#b39ddb" />
+                        <rect x="16" y="18" width="16" height="12" rx="6" fill="#fff" />
+                        <rect x="20" y="22" width="8" height="6" rx="3" fill="#9575cd" />
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Sport</span>
+                    <div class="product-title">Nike Air Max 270</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(892)</span>
+                    </div>
+                    <div class="product-prices">
+                        <span class="price">149,99€</span>
+                        <span class="old-price">199,99€</span>
+                    </div>
+                </div>
+                <button class="add-cart-btn">Ajouter au panier</button>
+            </div>
+            <!-- Produit 4 -->
+            <div class="product-card">
+                <button class="fav-btn" title="Ajouter aux favoris">&#9825;</button>
+                <div class="product-img">
+                    <!-- Icône montre -->
+                    <svg width="48" height="48" viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="16" fill="#3fa9f5" />
+                        <circle cx="24" cy="24" r="12" fill="#fff" />
+                        <circle cx="24" cy="24" r="8" fill="#6c63ff" />
+                        <rect x="22" y="12" width="4" height="8" rx="2" fill="#3fa9f5" />
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Électronique</span>
+                    <div class="product-title">Samsung Galaxy Watch</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="votes">(567)</span>
+                    </div>
+                    <div class="product-prices">
+                        <span class="price">299,99€</span>
+                    </div>
+                </div>
+                <button class="add-cart-btn">Ajouter au panier</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Chamka-Fashion</h3>
+                <p>Votre destination pour la mode tendance et abordable.<br>
+                Explorez notre collection et trouvez votre style unique.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="Index.html">Accueil</a></li>
+                    <li><a href="Produits.html">Produits</a></li>
+                    <li><a href="categorie.html">Catégories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact</h3>
+                <p>Email : <a href="mailto:chadrackmalamba57@gmail.com">chadrackmalamba57@gmail.com</a></p>
+                <p>Téléphone : <a href="tel:+243820086801">+243 820 086 801</a></p>
+                <p>Kinshasa, RDC</p>
+            </div>
+            <div class="footer-section social">
+                <h3>Suivez-nous</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chadrack Malamba. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
 
-    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

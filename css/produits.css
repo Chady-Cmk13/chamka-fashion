@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #4c74af;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    gap: 10px;
+
+}
+
+header .title {
+    font-size: 1.3em;
+    margin: 0 20px;
+    align-items: start;
+    text-align: start;
+}
+
+.title span {
+    color: #f0c040;
+}
+
+.navbar-liens {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #4c74af;
+    text-underline-offset: none;
+    margin-left: 100px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    background-color: #3b5a8f;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.icon-panier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-right: 0px;
+    margin-left: 350px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+}
+
+.container-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.popular-products p {
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    margin-bottom: 38px;
+}
+
+.products-grid {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(23, 70, 162, 0.06);
+    width: 260px;
+    min-height: 370px;
+    padding: 0 0 18px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    box-shadow: 0 6px 24px rgba(23, 70, 162, 0.13);
+    transform: translateY(-4px) scale(1.03);
+}
+
+.product-badges {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2;
+}
+
+.badge-new {
+    background: #19c37d;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 10px;
+    margin-bottom: 2px;
+}
+
+.badge-sale {
+    background: #f44336;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 10px;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    color: #bbb;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(23, 70, 162, 0.08);
+    z-index: 2;
+    transition: color 0.2s;
+}
+
+.fav-btn:hover {
+    color: #f44336;
+}
+
+.product-img {
+    margin: 48px 0 18px 0;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius:50%;
+    margin-top: 100px;
+}
+
+.product-info {
+    width: 100%;
+    padding: 0 18px;
+    text-align: left;
+    margin-top: 150px;
+}
+
+.product-cat {
+    color: #3fa9f5;
+    font-size: 0.93rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 4px 0 2px 0;
+    color: #222;
+}
+
+.product-rating {
+    font-size: 0.98rem;
+    color: #ffd600;
+    margin-bottom: 6px;
+}
+
+.product-rating .votes {
+    color: #888;
+    font-size: 0.93rem;
+    margin-left: 4px;
+}
+
+.product-prices {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.old-price {
+    font-size: 1rem;
+    color: #bbb;
+    text-decoration: line-through;
+}
+
+.add-cart-btn {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd600;
+    color: #1746a2;
+    border: none;
+    border-radius: 22px;
+    padding: 10px 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    box-shadow: 0 2px 8px rgba(23, 70, 162, 0.08);
+}
+
+.product-card:hover .add-cart-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+    .main-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 16px 0 16px;
+    }
+
+    .hero-image-card {
+        margin-top: 36px;
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .products-grid {
+        gap: 18px;
+    }
+
+    .product-card {
+        width: 44vw;
+        min-width: 180px;
+        max-width: 320px;
+    }
+}
+\Chamka Fashion\css\main.css
+footer {
+    background: #0a0909;
+    background-color: #0a0909;
+    color: #fff;
+    padding: 40px 0 0 0;
+    margin-top: 40px;
+    font-size: 1rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    gap: 32px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #ffd600;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffd600;
+}
+
+.footer-section p, .footer-section a {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.footer-section a:hover {
+    color: #ffd600;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.3rem;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: #ffd600;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    text-align: center;
+    padding: 18px 0;
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 800px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0 16px;
+    }
+    .footer-section {
+        margin-bottom: 24px;
+    }
+}
