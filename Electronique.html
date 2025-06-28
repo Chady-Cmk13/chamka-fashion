@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamka-Fashion - Electronique</title>
+    <link rel="stylesheet" href="css/electronique.css">
+    <link rel="stylesheet" href="css/categorie.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="Bg-light p-3 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h2 class="m-0">Chamka-<span style="color: #e91e63;">Fashion</span></h2>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Produits.html">Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categorie.html">Catégories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <a href="panier.html" class="btn btn-outline-primary">
+                <i class="fas fa-shopping-cart"></i> Panier
+            </a>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+
+        <section class="main-hero text-center mb-5">
+            <h1>Electronique</h1>
+            <p>Découvrez notre sélection d'appareils électroniques de haute qualité.</p>
+        </section>
+
+        <section class="categories">
+            <!-- Electronique -->
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/Air Pod Max.jpg" class="card-img-top" alt="AirPods Max">
+                        <div class="card-body text-center">
+                            <h5 class="card-title   ">AirPods Max</h5>
+                            <p class="card-text">Casque audio sans fil avec une qualité sonore exceptionnelle.</p>
+                            <div class="product-prices">
+                                <span class="price">25$</span>
+                            </div>
+                            <button class="btn btn-primary add-cart-btn">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Electronique -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/Montre inteligente2.jpg" class="card-img-top" alt="Montre intelligente">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Montre inteligente</h5>
+                            <p class="card-text">Montre intelligente avec suivi de la santé et notifications.</p>
+                            <div class="product-prices">
+                                <span class="price">35$</span>
+                            </div>
+                            <button class="btn btn-primary add-cart-btn">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Electronique -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="image/led.jpg" class="card-img-top" alt="Ruban LED">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Led 3 à 10 mètre</h5>
+                            <p class="card-text">Ruban LED flexible de 3 à 10 mètres pour une ambiance lumineuse.</p>
+                            <div class="product-prices">
+                                <span class="price">7 à 15$</span>
+                            </div>
+                            <button class="btn btn-primary add-cart-btn">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('panier')) || [];
+        let count = 0;
+        cart.forEach(item => count += item.quantity);
+        let panierBtn = document.querySelector('a[href="panier.html"]');
+        if (panierBtn) {
+            let badge = panierBtn.querySelector('.cart-count');
+            if (!badge) {
+                badge = document.createElement('span');
+                badge.className = 'cart-count badge bg-danger ms-2';
+                panierBtn.appendChild(badge);
+            }
+            badge.textContent = count;
+        }
+    }
+
+    function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('panier')) || [];
+        const index = cart.findIndex(item => item.title === product.title);
+        if (index > -1) {
+            cart[index].quantity += 1;
+        } else {
+            product.quantity = 1;
+            cart.push(product);
+        }
+        localStorage.setItem('panier', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const card = btn.closest('.card');
+            const title = card.querySelector('.card-title').textContent.trim();
+            const price = card.querySelector('.price').textContent.trim();
+            const img = card.querySelector('img').getAttribute('src');
+            addToCart({ title, price, img });
+        });
+    });
+
+    updateCartCount();
+    </script>
+</body>
+
+</html>

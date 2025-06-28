@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamka-Fashion - Panier</title>
+    <link rel="stylesheet" href="css/categorie.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="Bg-light p-3 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h2 class="m-0">Chamka-<span style="color: #e91e63;">Fashion</span></h2>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Produits.html">Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categorie.html">Catégories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <a href="panier.html" class="btn btn-outline-primary">
+                <i class="fas fa-shopping-cart"></i> Panier
+                <span class="cart-count badge bg-danger ms-2"></span>
+            </a>
+        </div>
+    </header>
+    <main class="container mt-5">
+        <section class="main-hero text-center mb-5">
+            <h1>Votre Panier</h1>
+            <p>Retrouvez ici les articles que vous souhaitez commander.</p>
+        </section>
+        <section id="cart-section">
+            <div id="cart-empty" class="alert alert-info text-center" style="display:none;">
+                Votre panier est vide.
+            </div>
+            <div id="cart-list"></div>
+            <div id="cart-total" class="text-end fw-bold fs-4 mt-4"></div>
+            <div class="text-end mt-4" id="order-btn-container">
+                <!-- Le bouton sera injecté par JS -->
+            </div>
+        </section>
+    </main>
+    <script>
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('panier')) || [];
+        let count = 0;
+        cart.forEach(item => count += item.quantity);
+        let panierBtn = document.querySelector('a[href="panier.html"]');
+        if (panierBtn) {
+            let badge = panierBtn.querySelector('.cart-count');
+            if (!badge) {
+                badge = document.createElement('span');
+                badge.className = 'cart-count badge bg-danger ms-2';
+                panierBtn.appendChild(badge);
+            }
+            badge.textContent = count;
+        }
+    }
+
+    function renderCart() {
+        const cart = JSON.parse(localStorage.getItem('panier')) || [];
+        const cartList = document.getElementById('cart-list');
+        const cartEmpty = document.getElementById('cart-empty');
+        const cartTotal = document.getElementById('cart-total');
+        const orderBtnContainer = document.getElementById('order-btn-container');
+        cartList.innerHTML = '';
+        let total = 0;
+        if (cart.length === 0) {
+            cartEmpty.style.display = '';
+            cartTotal.textContent = '';
+            orderBtnContainer.innerHTML = '';
+            return;
+        }
+        cartEmpty.style.display = 'none';
+        cart.forEach((item, idx) => {
+            // Extraction du prix numérique
+            let priceNum = parseFloat(item.price.replace(/[^\d.]/g, '').replace(',', '.')) || 0;
+            let itemTotal = priceNum * item.quantity;
+            total += itemTotal;
+            const row = document.createElement('div');
+            row.className = 'row align-items-center border-bottom py-3';
+            row.innerHTML = `
+                <div class="col-2">
+                    <img src="${item.img}" alt="${item.title}" class="img-fluid rounded" style="max-height:60px;">
+                </div>
+                <div class="col-4 fw-bold">${item.title}</div>
+                <div class="col-2">${item.price}</div>
+                <div class="col-2">
+                    <button class="btn btn-outline-secondary btn-sm me-2 btn-qty" data-idx="${idx}" data-action="dec">-</button>
+                    <span class="mx-1">${item.quantity}</span>
+                    <button class="btn btn-outline-secondary btn-sm ms-2 btn-qty" data-idx="${idx}" data-action="inc">+</button>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-danger btn-sm btn-remove" data-idx="${idx}"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+            cartList.appendChild(row);
+        });
+        cartTotal.textContent = "Total : " + total.toFixed(2) + " $";
+
+        // Générer le bouton WhatsApp avec images
+        let message = "Bonjour, je souhaite commander :%0A";
+        cart.forEach(item => {
+            // Génère un lien absolu pour l'image
+            let imgUrl = location.origin + "/" + item.img.replace(/^(\.?\/)/, '');
+            message += `- ${item.title} x${item.quantity} (${item.price})%0AImage : ${imgUrl}%0A`;
+        });
+        message += `Total : ${total.toFixed(2)} $`;
+        // Remplacez le numéro ci-dessous par le numéro WhatsApp du magasin
+        const whatsappNumber = "243820086801";
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+        orderBtnContainer.innerHTML = `
+            <a href="${whatsappUrl}" target="_blank" class="btn btn-success btn-lg">
+                <i class="fab fa-whatsapp"></i> Passer la commande sur WhatsApp
+            </a>
+        `;
+    }
+
+    // Gestion des boutons quantité et suppression
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-qty')) {
+            const idx = parseInt(e.target.getAttribute('data-idx'));
+            const action = e.target.getAttribute('data-action');
+            let cart = JSON.parse(localStorage.getItem('panier')) || [];
+            if (action === 'inc') {
+                cart[idx].quantity += 1;
+            } else if (action === 'dec' && cart[idx].quantity > 1) {
+                cart[idx].quantity -= 1;
+            }
+            localStorage.setItem('panier', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+        if (e.target.classList.contains('btn-remove')) {
+            const idx = parseInt(e.target.getAttribute('data-idx'));
+            let cart = JSON.parse(localStorage.getItem('panier')) || [];
+            cart.splice(idx, 1);
+            localStorage.setItem('panier', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+    });
+
+    // Initialisation
+    renderCart();
+    updateCartCount();
+    </script>
+</body>
+</html>

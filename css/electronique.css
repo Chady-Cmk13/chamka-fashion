@@ -1,0 +1,124 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fcf1f1;
+    margin: 0;
+    padding: 0;
+
+}
+.main-hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #151bbe;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main-hero p {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.main-hero .btn-primary {
+    display: inline-block;
+    background-color: #4c74af;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+.main-hero .btn-primary:hover {
+    background-color: #3a5a8f;
+    color: #fff;
+}
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.product-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+.product-item p {
+    font-size: 1rem;
+    color: #666;
+}
+.product-item .btn-primary {
+    background-color: #4c74af;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+.product-item .btn-primary:hover {
+    background-color: #3a5a8f;
+    color: #fff;
+}
+.product-item .price {
+    font-size: 1.2rem;
+    color: #d71515;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.product-item .price span {
+    font-size: 1.5rem;
+    color: #151bbe;
+}
+.product-item .price span::before {
+    content: "$";
+}
+.product-item .price span::after {
+    content: " USD";
+}
+.product-item button {
+    margin-top: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.product-item button:hover {
+    background-color: #333;
+    color: #fff;
+}
+.product-item button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 116, 175, 0.5);
+}
+.product-item button:active {
+    background-color: #000;
+    color: #fff;
+}
+.product-item button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+.product-item button:disabled:hover {
+    background-color: #ccc;
+    color: #666;
+}
